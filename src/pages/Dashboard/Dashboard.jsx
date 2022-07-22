@@ -1,8 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { ReactComponent as Avatar } from "../../pics/avatar.svg";
+
+// https://mockend.com/org/repo/posts?limit=5
+// https://mockend.com/org/repo/users?limit=5
 
 
 import styles from './Dashboard.module.scss';
@@ -52,6 +55,27 @@ function Dashboard() {
                         </div>
                         <div className={styles.link}>
                             <NavLink to='/quiz'>All</NavLink>
+                        </div>
+                    </div>
+                    <div className={styles.data}>
+                        <div className={styles.quiz_container}>
+                            <div className={styles.quiz_title}>
+                                <p>Unit 2 Quiz</p>
+                            </div>
+                            <div className={styles.quiz_details}>
+                                <li>
+                                    <span className={styles.quiz_details_head}>Course:</span> <span>Physics 2</span>
+                                </li>
+                                <li>
+                                    <span className={styles.quiz_details_head}>Topics:</span> <span>Motion and Force</span>
+                                </li>
+                                <li>
+                                    <span className={styles.quiz_details_head}>Due to:</span> <span>20 Dec 2022 - 09:00 PM</span>
+                                </li>
+                                <div className={styles.quiz_cta}>
+                                    <Link className={styles.quiz_cta_btn} to={'/'}>Start Quiz</Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
