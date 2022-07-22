@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fakeAnnouncementsService } from '../../redux/store/announcements';
 import { fakeQuizService } from '../../redux/store/quiz';
 
-
 import styles from './Dashboard.module.scss';
 
 function Dashboard() {
@@ -88,7 +87,7 @@ function Dashboard() {
                                     quizzesData && quizzesData.quiz
                                     && quizzesData.quiz.map((item, idx) => (
 
-                                        <div className={styles.quiz_container}>
+                                        <div key={idx} className={styles.quiz_container}>
                                             <div className={styles.quiz_title}>
                                                 <p>{item.name}</p>
                                             </div>

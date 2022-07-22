@@ -63,7 +63,7 @@ export const fetchQuizFailure = error => {
 export const fakeQuizService = () => {
     return (dispatch) => {
         dispatch(fetchQuizRequest());
-        axios.get('https://mockend.com/ahmed-elnashar/courses-dashboard/quiz?limit=5')
+        axios.get('https://mockend.com/ahmed-elnashar/courses-dashboard/quiz?limit=2')
             .then(response => {
                 const quiz = response.data;
                 dispatch(fetchQuizSuccess(quiz));

@@ -66,7 +66,7 @@ export const fetchAnnouncementsFailure = error => {
 export const fakeAnnouncementsService = () => {
     return (dispatch) => {
         dispatch(fetchAnnouncementsRequest());
-        axios.get('https://mockend.com/ahmed-elnashar/courses-dashboard/posts?limit=5')
+        axios.get('https://mockend.com/ahmed-elnashar/courses-dashboard/posts?limit=8')
             .then(response => {
                 const announcements = response.data;
                 dispatch(fetchAnnouncementsSuccess(announcements));
