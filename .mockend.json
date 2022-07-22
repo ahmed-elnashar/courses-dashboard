@@ -3,12 +3,16 @@
     "title": {
       "string": {}
     },
-    "User": {
-      "name": {
-        "string": {}
-      },
-      "avatarUrl": {
-        "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
+    "avatarUrl": {
+      "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
+    },
+    "name": {
+      "loremWords": { "minLength": 5, "maxLength": 20 }
+    },
+    "description": {
+      "loremSentences": {
+        "minLength": 100,
+        "maxLength": 200
       }
     }
   }
