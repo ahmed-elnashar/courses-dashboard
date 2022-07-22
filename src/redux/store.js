@@ -5,10 +5,10 @@ import thunk from "redux-thunk";
 
 const store = createStore(
     rootReducer,
+    loadFromLocalStorage(),
     composeWithDevTools(
         applyMiddleware(thunk),
-    ),
-    loadFromLocalStorage()
+    )
 );
 
 function saveToLocalStorage(state) {
