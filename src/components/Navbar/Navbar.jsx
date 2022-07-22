@@ -1,14 +1,18 @@
 import styles from "./Navbar.module.scss";
-
-import { ReactComponent as Avatar } from "../../pics/avatar.svg";
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MdOutlineMenu } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FiMessageCircle, FiMail } from "react-icons/fi";
 
+import { ReactComponent as Avatar } from "../../pics/avatar.svg";
+
+import { setSidebar } from '../../redux/store/theme';
 
 
 const Navbar = () => {
+    const sidebar = useSelector(state => state.theme.sidebar);
+    const dispatch = useDispatch();
 
     return (
         <div className={styles.container}>
@@ -16,7 +20,7 @@ const Navbar = () => {
             <div
                 className={styles.burger_container}
                 onClick={() => {
-                    //   setNav(!nav);
+                    dispatch(setSidebar(!sidebar));
                 }}
             >
                 <MdOutlineMenu />
@@ -39,9 +43,9 @@ const Navbar = () => {
             </div>
 
             {/* Profile */}
-            <div className={styles.avatar_container}>
-                <div className={styles.icon_avatar_container}>
-                    <Avatar />
+            <div className={styles.profile_container}>
+                <div className={styles.img_container}>
+                    <img src='https://via.placeholder.com/600/92c952' alt='' />
                 </div>
                 <div className={styles.username}>
                     <span>Ahmed Tarek</span>

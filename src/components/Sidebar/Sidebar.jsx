@@ -1,22 +1,23 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Sidebar.module.scss';
 import { MdOutlineLogout } from 'react-icons/md';
 import { IoMegaphone } from 'react-icons/io5';
 import { FaChalkboardTeacher, FaTimes, FaHome, FaBook, FaGraduationCap, FaChartLine } from 'react-icons/fa';
 import { GoCalendar } from 'react-icons/go';
-
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { setSidebar } from '../../redux/store/theme';
 
 
 function Sidebar() {
-    const [nav, setNav] = useState(false);
+    const sidebar = useSelector(state => state.theme.sidebar);
+    const dispatch = useDispatch();
 
     const NavUrl = ({ url, icon, description }) => {
 
         const checkWindowSize = () => {
-            if (window.innerWidth < 1024) setNav(!nav);
+            if (window.innerWidth < 1024) dispatch(setSidebar(!sidebar));
         };
 
         return (
@@ -34,13 +35,13 @@ function Sidebar() {
     };
 
     return (
-        <div className={`${styles.navbar_container} ${nav ? styles.navbar_mobile_active : ''}`}>
-            <nav className={nav ? '' : styles.nav_small}>
+        <div className={`${styles.navbar_container} ${sidebar ? styles.navbar_mobile_active : ''}`}>
+            <nav className={sidebar ? '' : styles.nav_small}>
                 {/* Logo */}
                 <div className={styles.logo}>
                     <span className={styles.logo_text}>Coligo</span>
                     <FaChalkboardTeacher className={styles.logo_icon} />
-                    <FaTimes className={styles.mobile_cancel_logo} onClick={() => setNav(!nav)} />
+                    <FaTimes className={styles.mobile_cancel_logo} onClick={() => dispatch(setSidebar(!sidebar))} />
                 </div>
                 {/* Submenu */}
                 <ul className={styles.menu_container}>
@@ -55,19 +56,19 @@ function Sidebar() {
                 </ul>
                 <div
                     className={styles.btn_logout}
-                    onClick={() => setNav(!nav)}
+                    onClick={() => dispatch(setSidebar(!sidebar))}
                 >
                     <MdOutlineLogout />
                 </div>
 
                 <div
-                    className={nav ? styles.mobile_nav_background_active : ''}
+                    className={sidebar ? styles.mobile_nav_background_active : ''}
                     onClick={() => {
-                        setNav(!nav);
+                        dispatch(setSidebar(!sidebar));
                     }}
                 ></div>
-            </nav >
-        </div >
+            </nav>
+        </div>
     );
 }
 

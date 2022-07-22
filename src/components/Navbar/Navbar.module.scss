@@ -71,7 +71,7 @@
 }
 
 
-.avatar_container {
+.profile_container {
     position: relative;
     display: flex;
     align-items: center;
@@ -88,17 +88,12 @@
     }
 }
 
-.icon_avatar_container {
-    width: 2.2rem;
-    height: 2.2rem;
-    display: flex;
-    justify-content: center;
+.img_container {
     padding: 0.5rem;
-    border-radius: 50%;
-    background: linear-gradient(50deg, rgba(235, 200, 225, 0.7) 25%, rgba(85, 79, 232, 0.7) 100%);
-
-    svg {
-        transform: translateX(2px);
+    img {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
     }
 }
 
