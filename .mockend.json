@@ -4,12 +4,29 @@
       "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
     },
     "name": {
-      "regexp": "[A-Z][a-z]{5,10}" 
+      "regexp": "[A-Z][a-z]{5,10}"
     },
     "description": {
       "loremSentences": {
         "minLength": 50,
         "maxLength": 100
+      }
+    }
+  },
+  "Quiz": {
+    "name": {
+      "regexp": "[A-Z][a-z]{5,10}"
+    },
+    "course": {
+      "regexp": "[A-Z][a-z]{5,10}"
+    },
+    "topic": {
+      "regexp": "[A-Z][a-z]{5,10}"
+    },
+    "date": {
+      "dateTime": {
+        "min": "2022-01-01T00:00:00Z",
+        "max": "2022-12-31T23:59:59Z"
       }
     }
   }
