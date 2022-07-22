@@ -4,9 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { ReactComponent as Avatar } from "../../pics/avatar.svg";
 
-// https://mockend.com/org/repo/posts?limit=5
-// https://mockend.com/org/repo/users?limit=5
-
 
 import styles from './Dashboard.module.scss';
 

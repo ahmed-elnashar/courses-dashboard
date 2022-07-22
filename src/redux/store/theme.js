@@ -5,6 +5,7 @@ const initialState = {
 // Action Types
 const SET_SIDEBAR = 'SET_SIDEBAR';
 
+// Reducer
 const themeReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_SIDEBAR:

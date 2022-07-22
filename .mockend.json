@@ -1,15 +1,17 @@
 {
-  "User": {
-    "name": {
-      "string": {}
+  "data": {
+    "User": {
+      "name": {
+        "string": {}
+      },
+      "avatarUrl": {
+        "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
+      }
     },
-    "avatarUrl": {
-      "regexp": "https://i\\.pravatar\\.cc/150\\?u=[0-9]{5}"
-    }
-  },
-  "Post": {
-    "title": {
-      "string": {}
+    "Post": {
+      "title": {
+        "string": {}
+      }
     }
   }
 }
