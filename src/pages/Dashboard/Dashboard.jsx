@@ -4,16 +4,19 @@ import { MdOutlineWavingHand } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fakeAnnouncementsService } from '../../redux/store/announcements';
+import { fakeQuizService } from '../../redux/store/quiz';
 
 
 import styles from './Dashboard.module.scss';
 
 function Dashboard() {
     const dispatch = useDispatch();
-    const announcementsData = useSelector(state => state.data);
+    const announcementsData = useSelector(state => state.announceData);
+    const quizzesData = useSelector(state => state.quizData);
 
     useEffect(() => {
         dispatch(fakeAnnouncementsService());
+        dispatch(fakeQuizService());
     }, [dispatch]);
 
     return (
@@ -75,25 +78,39 @@ function Dashboard() {
                         </div>
                     </div>
                     <div className={styles.data}>
-                        <div className={styles.quiz_container}>
-                            <div className={styles.quiz_title}>
-                                <p>Unit 2 Quiz</p>
-                            </div>
-                            <div className={styles.quiz_details}>
-                                <li>
-                                    <span className={styles.quiz_details_head}>Course:</span> <span>Physics 2</span>
-                                </li>
-                                <li>
-                                    <span className={styles.quiz_details_head}>Topics:</span> <span>Motion and Force</span>
-                                </li>
-                                <li>
-                                    <span className={styles.quiz_details_head}>Due to:</span> <span>20 Dec 2022 - 09:00 PM</span>
-                                </li>
-                                <div className={styles.quiz_cta}>
-                                    <Link className={styles.quiz_cta_btn} to={'/'}>Start Quiz</Link>
-                                </div>
-                            </div>
-                        </div>
+                        {
+                            quizzesData.loading ? (
+                                <h2>Loading...</h2>
+                            ) :
+                                quizzesData.error ? (
+                                    <h2>{quizzesData.error}</h2>
+                                ) : (
+                                    quizzesData && quizzesData.quiz
+                                    && quizzesData.quiz.map((item, idx) => (
+
+                                        <div className={styles.quiz_container}>
+                                            <div className={styles.quiz_title}>
+                                                <p>{item.name}</p>
+                                            </div>
+                                            <div className={styles.quiz_details}>
+                                                <li>
+                                                    <span className={styles.quiz_details_head}>Course:</span> <span>{item.course}</span>
+                                                </li>
+                                                <li>
+                                                    <span className={styles.quiz_details_head}>Topics:</span> <span>{item.topic}</span>
+                                                </li>
+                                                <li>
+                                                    <span className={styles.quiz_details_head}>Due to:</span> <span>{item.date}</span>
+                                                </li>
+                                                <div className={styles.quiz_cta}>
+                                                    <Link className={styles.quiz_cta_btn} to={'/'}>Start Quiz</Link>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    ))
+                                )
+                        }
                     </div>
                 </div>
 
