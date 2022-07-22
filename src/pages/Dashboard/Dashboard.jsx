@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
 import { MdOutlineWavingHand } from 'react-icons/md';
-import { ReactComponent as Avatar } from "../../pics/avatar.svg";
+import { useSelector, useDispatch } from 'react-redux';
+
+import { fakeAnnouncementsService } from '../../redux/store/announcements';
 
 
 import styles from './Dashboard.module.scss';
 
 function Dashboard() {
+    const dispatch = useDispatch();
+    const announcementsData = useSelector(state => state.data);
+
+    useEffect(() => {
+        dispatch(fakeAnnouncementsService());
+    }, [dispatch]);
+
     return (
         <main className={styles.container}>
             <div className={styles.welcome}>
@@ -31,17 +39,29 @@ function Dashboard() {
                         </div>
                     </div>
                     <div className={styles.data}>
-                        <div className={styles.instructor_container}>
-                            <div className={styles.img_container}>
-                                <img src='https://via.placeholder.com/600/92c952' alt=''/>
-                            </div>
-                            <div className={styles.username}>
-                                <span>Ahmed Tarek</span>
-                            </div>
-                            <div className={styles.text}>
-                                hello ahmed leajrlfd flkasdfjldsj fadskl jflskdflkds fljkasdhflkj aslfkjlashd flkjdslfj asflkas flk lskjfljs;af  jksadf
-                            </div>
-                        </div>
+                        {
+                            announcementsData.loading ? (
+                                <h2>Loading...</h2>
+                            ) :
+                                announcementsData.error ? (
+                                    <h2>{announcementsData.error}</h2>
+                                ) : (
+                                    announcementsData && announcementsData.announcements
+                                    && announcementsData.announcements.map((item, idx) => (
+                                        <div key={idx} className={styles.instructor_container}>
+                                            <div className={styles.img_container}>
+                                                <img src={item.avatarUrl} alt='' />
+                                            </div>
+                                            <div className={styles.username}>
+                                                <span>{item.name}</span>
+                                            </div>
+                                            <div className={styles.text}>
+                                                {item.description}
+                                            </div>
+                                        </div>
+                                    ))
+                                )
+                        }
                     </div>
                 </div>
                 <div className={styles.quiz}>

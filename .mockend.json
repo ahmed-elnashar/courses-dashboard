@@ -8,8 +8,8 @@
     },
     "description": {
       "loremSentences": {
-        "minLength": 100,
-        "maxLength": 200
+        "minLength": 50,
+        "maxLength": 100
       }
     }
   }

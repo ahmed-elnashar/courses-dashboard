@@ -3,7 +3,7 @@ import themeReducer from "./store/theme";
 import announcementsReducer from "./store/announcements";
 const rootReducer = combineReducers({
     theme: themeReducer,
-    announcements: announcementsReducer
+    data: announcementsReducer
 });
 
 export default rootReducer;
